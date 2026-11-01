@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <script defer src="/_vercel/insights/script.js"></script>
+    <script defer src="/_vercel/speed-insights/script.js"></script>
     <title>Devotio Capital Management — The Real Estate Private Bank®</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
@@ -37,7 +40,7 @@
             padding: 16px 64px;
             border-bottom: 1px solid var(--border);
         }
-        .nav-logo img { height: 48px; }
+        .nav-logo img { height: 72px; }
         .nav-links { display: flex; gap: 40px; list-style: none; }
         .nav-links a {
             color: var(--text-muted); text-decoration: none;
@@ -115,8 +118,8 @@
             opacity: 0; animation: fadeUp 1s 0.9s cubic-bezier(.22,1,.36,1) forwards;
         }
         .hero-sub {
-            font-size: 16px; font-weight: 300; color: var(--text-muted);
-            max-width: 540px; line-height: 1.75;
+            font-size: 19px; font-weight: 300; color: var(--text-light);
+            max-width: 620px; line-height: 1.75;
             opacity: 0; animation: fadeUp 1s 1.0s cubic-bezier(.22,1,.36,1) forwards;
         }
         .hero-ctas {
@@ -173,7 +176,7 @@
         /* ── SECTIONS ── */
         section { padding: 128px 64px; }
         .section-label {
-            font-size: 11px; font-weight: 600; letter-spacing: 0.22em;
+            font-size: 13px; font-weight: 600; letter-spacing: 0.22em;
             text-transform: uppercase; color: var(--gold); margin-bottom: 18px;
         }
         .section-title { font-size: clamp(28px, 3.5vw, 46px); font-weight: 400; line-height: 1.15; color: var(--cream); }
@@ -197,7 +200,23 @@
         .about-point p { font-size: 14px; line-height: 1.75; color: var(--text-muted); }
 
         /* ── SERVICES ── */
-        #services { background: var(--dark); }
+        #services { background: var(--dark); position: relative; overflow: hidden; }
+        #services > .services-bg {
+            position: absolute; inset: 0;
+            background-image: url('Archives.png');
+            background-size: cover; background-position: center 30%;
+            opacity: 0.40;
+            z-index: 0;
+        }
+        #services::before {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(to bottom,
+                rgba(12,12,12,0.55) 0%,
+                rgba(12,12,12,0.30) 40%,
+                rgba(12,12,12,0.70) 100%);
+            pointer-events: none; z-index: 1;
+        }
+        #services > * { position: relative; z-index: 2; }
         .services-header { max-width: 1200px; margin: 0 auto 72px; }
         .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; max-width: 1200px; margin: 0 auto; }
         .service-card {
@@ -213,15 +232,32 @@
         .service-card:hover { background: rgba(28,28,28,0.6); }
         .service-icon { width: 36px; height: 1px; background: var(--gold); margin-bottom: 28px; }
         .service-card h3 { font-size: 21px; font-weight: 500; color: var(--cream); margin-bottom: 18px; line-height: 1.25; }
-        .service-card p { font-size: 14px; line-height: 1.8; color: var(--text-muted); }
+        .service-card p { font-size: 14px; line-height: 1.8; color: var(--text-light); }
         .service-case {
             margin-top: 28px; padding: 18px 20px;
             background: rgba(196,150,43,0.06); border-left: 2px solid var(--gold);
-            font-size: 13px; line-height: 1.65; color: var(--text-muted); font-style: italic;
+            font-size: 13px; line-height: 1.65; color: var(--text-light); font-style: italic;
         }
 
         /* ── DIFFERENCE ── */
-        #difference { background: var(--dark-2); }
+        #difference { background: var(--dark-2); position: relative; overflow: hidden; }
+        #difference > .diff-bg {
+            position: absolute; inset: 0;
+            background-image: url('Tailor.png');
+            background-size: cover; background-position: center;
+            opacity: 0.40;
+            filter: grayscale(100%);
+            z-index: 0;
+        }
+        #difference::before {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(to bottom,
+                rgba(12,12,12,0.55) 0%,
+                rgba(12,12,12,0.30) 40%,
+                rgba(12,12,12,0.70) 100%);
+            pointer-events: none; z-index: 1;
+        }
+        #difference > * { position: relative; z-index: 2; }
         .diff-inner { max-width: 1000px; margin: 0 auto; }
         .diff-header { text-align: center; margin-bottom: 64px; }
         .diff-header .section-divider { margin: 28px auto; }
@@ -229,21 +265,21 @@
         table.diff-table { width: 100%; border-collapse: collapse; }
         .diff-table thead th {
             padding: 18px 36px; text-align: center;
-            font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
-            text-transform: uppercase; color: var(--text-muted);
+            font-size: 13px; font-weight: 600; letter-spacing: 0.14em;
+            text-transform: uppercase; color: var(--text-light);
             border-bottom: 1px solid var(--border);
         }
         .diff-table thead th:first-child { text-align: left; }
         .diff-table thead th:last-child { color: var(--gold); }
         .diff-table tbody tr { border-bottom: 1px solid rgba(255,255,255,0.04); transition: background 0.2s; }
         .diff-table tbody tr:hover { background: rgba(255,255,255,0.025); }
-        .diff-table tbody td { padding: 18px 36px; text-align: center; font-size: 14px; color: var(--text-muted); }
-        .diff-table tbody td:first-child { text-align: left; font-weight: 500; color: var(--cream); font-size: 13px; letter-spacing: 0.04em; }
-        .diff-table tbody td.bad { color: #555; }
+        .diff-table tbody td { padding: 18px 36px; text-align: center; font-size: 16px; color: var(--text-light); }
+        .diff-table tbody td:first-child { text-align: left; font-weight: 500; color: var(--cream); font-size: 15px; letter-spacing: 0.04em; }
+        .diff-table tbody td.bad { color: #bbb; font-size: 16px; }
         .diff-table tbody td.good { color: var(--gold); font-weight: 500; }
 
         /* ── MARKETS ── */
-        #markets { background: var(--dark); }
+        #markets { background: var(--dark-2); }
         .markets-inner { max-width: 1200px; margin: 0 auto; }
         .markets-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 96px; align-items: start; }
         .markets-tags { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 40px; }
@@ -285,10 +321,26 @@
         }
         .market-stat:hover { border-color: rgba(196,150,43,0.4); }
         .market-stat .big { font-family: 'Playfair Display', serif; font-size: 44px; color: var(--gold); line-height: 1; }
-        .market-stat p { font-size: 13px; color: var(--text-muted); margin-top: 10px; line-height: 1.65; }
+        .market-stat p { font-size: 13px; color: var(--text-light); margin-top: 10px; line-height: 1.65; }
 
         /* ── TRACK RECORD ── */
-        #track-record { background: var(--dark-2); }
+        #track-record { background: var(--dark-2); position: relative; overflow: hidden; }
+        #track-record > .track-bg {
+            position: absolute; inset: 0;
+            background-image: url('Shirts.avif');
+            background-size: cover; background-position: center 30%;
+            opacity: 0.60;
+            z-index: 0;
+        }
+        #track-record::before {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(to bottom,
+                rgba(12,12,12,0.55) 0%,
+                rgba(12,12,12,0.30) 40%,
+                rgba(12,12,12,0.70) 100%);
+            pointer-events: none; z-index: 1;
+        }
+        #track-record > * { position: relative; z-index: 2; }
         .track-header { max-width: 1200px; margin: 0 auto 72px; }
         .deals-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; max-width: 1400px; margin: 0 auto; }
         .deal-card {
@@ -312,8 +364,8 @@
         .deal-badge.current { background: var(--gold-pale); color: var(--gold); }
         .deal-badge.resolved { background: rgba(255,255,255,0.05); color: var(--text-muted); }
         .deal-name { font-size: 17px; font-weight: 500; color: var(--cream); line-height: 1.3; }
-        .deal-location { font-size: 12px; color: var(--text-muted); margin-top: 5px; letter-spacing: 0.05em; }
-        .deal-type { font-size: 12px; color: var(--text-muted); margin-top: 4px; line-height: 1.5; }
+        .deal-location { font-size: 12px; color: var(--text-light); margin-top: 5px; letter-spacing: 0.05em; }
+        .deal-type { font-size: 12px; color: var(--text-light); margin-top: 4px; line-height: 1.5; }
         .deal-metrics {
             display: flex; gap: 24px; margin-top: 28px;
             padding-top: 22px; border-top: 1px solid var(--border);
@@ -347,6 +399,24 @@
             font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--text-muted);
             transition: color 0.2s;
         }
+
+        /* ── DIFFERENCE LEGIBILITY (Tailor background) ── */
+        #difference .section-body { color: var(--text-light); }
+        #markets .section-body,
+        #track-record .section-body { color: var(--text-light); }
+
+        /* ── HOW WE WORK LEGIBILITY (Shirts background) ── */
+        #how-we-work .section-body,
+        #how-we-work .process-step p { color: var(--text-light); }
+
+        /* ── ABOUT + TEAM LEGIBILITY (Archives background) ── */
+        #about .section-body,
+        #about .about-meta-item .label,
+        #about .about-meta-item .value { color: var(--text-light); }
+        #about .about-point p { color: var(--text-light); }
+        #team .section-body,
+        #team .team-exp,
+        #team .team-expand { color: var(--text-light); }
 
         /* ── MODALS ── */
         .modal-overlay {
@@ -383,27 +453,33 @@
             position: relative; overflow: hidden;
             border-top: 1px solid var(--border);
         }
-        .contact-bg {
+        #contact > .contact-bg {
             position: absolute; inset: 0;
-            background-image: url('Background copy/Castle Ashby Color.jpg');
+            background-image: url('New contact page background.png');
             background-size: cover; background-position: center;
-            opacity: 0.08;
+            opacity: 0.75;
+            filter: brightness(0.6);
+            z-index: 0;
         }
-        #contact > * { position: relative; z-index: 1; }
         #contact::before {
             content: ''; position: absolute; inset: 0;
-            background: var(--dark-3); z-index: 0;
+            background: linear-gradient(to bottom,
+                rgba(12,12,12,0.35) 0%,
+                rgba(12,12,12,0.15) 40%,
+                rgba(12,12,12,0.50) 100%);
+            pointer-events: none; z-index: 1;
         }
+        #contact > * { position: relative; z-index: 2; }
         .contact-inner { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 96px; align-items: start; }
         .contact-details { margin-top: 44px; display: flex; flex-direction: column; gap: 28px; }
         .contact-item { display: flex; gap: 18px; align-items: flex-start; }
         .contact-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); margin-top: 7px; flex-shrink: 0; }
-        .contact-text { font-size: 15px; line-height: 1.65; color: var(--text-muted); }
+        .contact-text { font-size: 15px; line-height: 1.65; color: var(--text-light); }
         .contact-text strong { color: var(--cream); display: block; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
         .contact-form { display: flex; flex-direction: column; gap: 14px; margin-top: 8px; }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
         .form-input {
-            background: var(--dark); border: 1px solid var(--border);
+            background: rgba(12,12,12,0.55); border: 1px solid var(--border);
             color: var(--text-light); padding: 14px 18px; font-size: 14px;
             font-family: 'Inter', sans-serif; outline: none;
             transition: border-color 0.2s; width: 100%;
@@ -459,10 +535,55 @@
             font-size: 13px; line-height: 1.8; color: var(--text-muted);
         }
         .process-tag {
-            display: inline-block; margin-top: 18px;
+            display: inline-block; margin-top: auto; padding-top: 18px;
             font-size: 10px; font-weight: 600; letter-spacing: 0.16em;
             text-transform: uppercase; color: var(--gold);
             padding: 4px 10px; border: 1px solid rgba(196,150,43,0.25);
+        }
+
+        /* ── MOBILE MENU ── */
+        .nav-hamburger {
+            display: none;
+            flex-direction: column; justify-content: center; gap: 5px;
+            background: none; border: none; cursor: pointer; padding: 4px;
+            z-index: 110;
+        }
+        .nav-hamburger span {
+            display: block; width: 24px; height: 1.5px;
+            background: var(--cream); transition: all 0.3s ease;
+        }
+        .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+        .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+        .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+        .mobile-menu {
+            position: fixed; inset: 0; z-index: 105;
+            background: rgba(10,10,10,0.97);
+            backdrop-filter: blur(12px);
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center; gap: 0;
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.35s ease;
+        }
+        .mobile-menu.open { opacity: 1; pointer-events: all; }
+        .mobile-menu a {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px; font-weight: 400;
+            color: var(--cream); text-decoration: none;
+            padding: 18px 0; letter-spacing: 0.04em;
+            border-bottom: 1px solid rgba(196,150,43,0.12);
+            width: 220px; text-align: center;
+            transition: color 0.2s;
+        }
+        .mobile-menu a:first-child { border-top: 1px solid rgba(196,150,43,0.12); }
+        .mobile-menu a:hover { color: var(--gold); }
+        .mobile-menu-cta {
+            margin-top: 40px;
+            background: var(--gold); color: var(--dark) !important;
+            padding: 14px 40px !important; border: none !important;
+            font-family: 'Inter', sans-serif !important;
+            font-size: 12px !important; font-weight: 600 !important;
+            letter-spacing: 0.12em !important; text-transform: uppercase !important;
+            width: auto !important;
         }
 
         /* ── FOOTER ── */
@@ -471,7 +592,7 @@
             border-top: 1px solid var(--border);
             display: flex; align-items: center; justify-content: space-between;
         }
-        footer img { height: 34px; }
+        footer img { height: 52px; }
         .footer-right { text-align: right; }
         .footer-right p { font-size: 12px; color: var(--text-muted); line-height: 1.7; }
 
@@ -494,6 +615,7 @@
         /* ── RESPONSIVE ── */
         @media (max-width: 1100px) {
             nav, nav.scrolled { padding: 20px 32px; }
+            .nav-logo img { height: 56px; }
             section { padding: 88px 32px; }
             #stats { grid-template-columns: repeat(2, 1fr); padding: 44px 32px; }
             .stat-item:nth-child(2) { border-right: none; }
@@ -508,20 +630,83 @@
             .process-step:nth-child(3) .process-line-left { background: transparent; }
         }
         @media (max-width: 700px) {
+            /* Nav */
             .nav-links, .nav-cta { display: none; }
-            #stats { grid-template-columns: 1fr 1fr; }
+            .nav-hamburger { display: flex; }
+            .nav-logo img { height: 40px; }
+            nav, nav.scrolled { padding: 16px 24px; }
+
+            /* Sections */
+            section { padding: 64px 24px; }
+            #how-we-work { padding: 64px 24px !important; }
+
+            /* Hero */
+            #hero { min-height: 100svh; }
+            #hero > .hero-bg { background-position: center 20%; opacity: 0.35; animation: none; transform: none; }
+            #hero::before { background: linear-gradient(to bottom, rgba(12,12,12,0.65) 0%, rgba(12,12,12,0.40) 40%, rgba(12,12,12,0.80) 100%); }
+            .hero-headline { font-size: clamp(30px, 9vw, 48px); }
+            .hero-sub { font-size: 16px; max-width: 100%; }
+            .hero-ctas { flex-direction: column; align-items: center; }
+
+            /* Stats */
+            #stats { grid-template-columns: 1fr 1fr; padding: 36px 24px; }
             .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
             .stat-item:last-child { border-bottom: none; }
+            .stat-number { font-size: 36px; }
+
+            /* Services (Archives) */
+            .about-meta { flex-direction: column; gap: 20px; }
+
+            /* Services */
+            #services > .services-bg { background-position: center 15%; opacity: 0.30; }
+            #services::before { background: linear-gradient(to bottom, rgba(12,12,12,0.70) 0%, rgba(12,12,12,0.50) 40%, rgba(12,12,12,0.80) 100%); }
+
+            /* Difference */
+            #difference > .diff-bg { background-position: center; opacity: 0.30; }
+            #difference::before { background: linear-gradient(to bottom, rgba(12,12,12,0.70) 0%, rgba(12,12,12,0.50) 40%, rgba(12,12,12,0.80) 100%); }
+
+            /* Markets */
+            .markets-map-col { margin-top: 0; margin-right: 0; }
+
+            /* Deals */
             .deals-grid { grid-template-columns: 1fr; }
+
+            /* Team */
             .team-grid { grid-template-columns: 1fr 1fr; }
-            .hero-ctas { flex-direction: column; align-items: center; }
+
+            /* Contact */
+            #contact > .contact-bg { background-position: center top; opacity: 0.30; }
+            #contact::before { background: linear-gradient(to bottom, rgba(12,12,12,0.70) 0%, rgba(12,12,12,0.50) 40%, rgba(12,12,12,0.80) 100%); }
+
+            /* Forms */
             .form-row { grid-template-columns: 1fr; }
-            footer { flex-direction: column; gap: 16px; text-align: center; }
-            .footer-right { text-align: center; }
-            .modal { padding: 40px 28px; }
+
+            /* Process */
             .process-steps { grid-template-columns: 1fr; gap: 40px; }
             .process-step { align-items: flex-start; text-align: left; }
             .process-line { display: none; }
+
+            /* Footer */
+            footer { flex-direction: column; gap: 16px; text-align: center; padding: 24px; }
+            .footer-right { text-align: center; }
+
+            /* Modal */
+            .modal { padding: 40px 24px; }
+        }
+
+        @media (max-width: 400px) {
+            .team-grid { grid-template-columns: 1fr; }
+            .hero-headline { font-size: clamp(26px, 10vw, 38px); }
+        }
+
+        /* ── DIFFERENCE TABLE MOBILE ── */
+        @media (max-width: 700px) {
+            .diff-inner { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+            table.diff-table { min-width: 480px; }
+            .diff-table thead th { padding: 12px 16px; font-size: 11px; }
+            .diff-table tbody td { padding: 12px 16px; font-size: 13px; }
+            .diff-table tbody td:first-child { font-size: 12px; }
+            .diff-table tbody td.bad { font-size: 13px; }
         }
     </style>
 </head>
@@ -538,14 +723,27 @@
         <li><a href="#contact">Contact</a></li>
     </ul>
     <a href="#contact" class="nav-cta">Get in Touch</a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+    </button>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+    <a href="#about" class="mobile-nav-link">About</a>
+    <a href="#services" class="mobile-nav-link">Services</a>
+    <a href="#track-record" class="mobile-nav-link">Track Record</a>
+    <a href="#team" class="mobile-nav-link">Team</a>
+    <a href="#contact" class="mobile-nav-link">Contact</a>
+    <a href="#contact" class="mobile-nav-link mobile-menu-cta">Get in Touch</a>
+</div>
 
 <!-- HERO -->
 <section id="hero">
     <div class="hero-bg"></div>
     <h1 class="hero-headline">Your Family Office<br>Real Estate Team</h1>
     <div class="hero-divider"></div>
-    <p class="hero-sub">Bespoke, efficient, direct real estate investment for select taxable investors. Creating real estate owners — not LPs.</p>
+    <p class="hero-sub">Bespoke, efficient, direct real estate investment for FO/MFO and UHNW. Creating real estate owners — not LPs.</p>
     <div class="hero-ctas">
         <a href="#about" class="btn-primary">Our Approach</a>
         <a href="#contact" class="btn-secondary">Connect With Us</a>
@@ -563,7 +761,7 @@
         <div class="stat-label">Transaction Experience</div>
     </div>
     <div class="stat-item reveal delay-2">
-        <div class="stat-number">$375M</div>
+        <div class="stat-number">$410M</div>
         <div class="stat-label">Portfolio NAV</div>
     </div>
     <div class="stat-item reveal delay-3">
@@ -588,26 +786,26 @@
                 </div>
                 <div class="about-meta-item">
                     <div class="label">Offices</div>
-                    <div class="value">Stamford, CT<br>New York, NY<br>Los Angeles, CA</div>
+                    <div class="value">Stamford, CT<br>Boston, MA<br>Los Angeles, CA<br>Teton County, WY</div>
                 </div>
             </div>
         </div>
         <div class="about-right">
             <div class="about-point reveal">
                 <h4>Investor Driven</h4>
-                <p>We reverse the typical approach. Rather than pushing deals or funds, we start by deeply understanding each client's objectives and design programs around them. The client always retains full discretion.</p>
+                <p>Rather than pushing our deals or funds, we understand our client's objectives and design and execute an investment program around them. The client retains discretion.</p>
             </div>
             <div class="about-point reveal delay-1">
-                <h4>Aligned Co-Investment</h4>
-                <p>We co-invest alongside our clients in every transaction. No Devotio compensation until a client-approved investment is closed. Our success is inseparable from yours.</p>
+                <h4>Alignment</h4>
+                <p>We co-invest next to our clients in every transaction. Our compensation is based only on success of our investments.</p>
             </div>
             <div class="about-point reveal delay-2">
-                <h4>Structured for Taxable Investors</h4>
-                <p>Long-term holds, 1031 exchanges, Opportunity Zone benefits, and step-up basis planning create materially higher after-tax returns than traditional fund structures — often by a factor of 2x.</p>
+                <h4>Structured for Generational, Taxable Investors</h4>
+                <p>Designed and managed to fully reap the extraordinary benefits of private real estate (even doubling long term after-tax returns).</p>
             </div>
             <div class="about-point reveal delay-3">
-                <h4>Institutional Caliber, Boutique Cost</h4>
-                <p>Five institutional professionals. A single layer of fees. The expertise of a dedicated family office real estate team at a fraction of the cost of building one in-house.</p>
+                <h4>Institutional Capability</h4>
+                <p>Five pedigreed, career institutional investors enable the real estate capability of the largest, most sophisticated FOs at a fraction of the cost.</p>
             </div>
         </div>
     </div>
@@ -615,17 +813,18 @@
 
 <!-- SERVICES -->
 <section id="services">
+    <div class="services-bg"></div>
     <div class="services-header">
         <div class="section-label reveal">What We Do</div>
-        <h2 class="section-title reveal">Three Ways We Work<br>With Clients</h2>
+        <h2 class="section-title reveal">Ways We Work<br>With Clients</h2>
         <div class="section-divider reveal"></div>
     </div>
     <div class="services-grid">
         <div class="service-card reveal" data-num="01">
             <div class="service-icon"></div>
-            <h3>Advisory</h3>
-            <p>An expert investing resource for major real estate questions and problems. We can assist with a family's existing holdings — including assuming an ongoing asset management role — on an advisory or retainer basis.</p>
-            <div class="service-case">"Client dies leaving $200MM portfolio of private real estate partnership interests. Heirs asked their RIA for guidance. Devotio provided expert valuation review, evaluation of partnership rights, and a detailed recommendation."</div>
+            <h3>Outsourced FO Real Estate Team</h3>
+            <p>We design, execute and manage a comprehensive private real estate allocation for a family office or multi-family office — delivering the capabilities of a dedicated in-house team at a fraction of the overhead cost.</p>
+            <div class="service-case">"$1B family office wanted institutional expertise for direct, control investments. The cost of building an in-house team gave them pause. Devotio was introduced by a trusted advisor and now plays that role full-time."</div>
         </div>
         <div class="service-card reveal delay-1" data-num="02">
             <div class="service-icon"></div>
@@ -635,21 +834,21 @@
         </div>
         <div class="service-card reveal delay-2" data-num="03">
             <div class="service-icon"></div>
-            <h3>Outsourced FO Real Estate Team</h3>
-            <p>We design, execute and manage a comprehensive private real estate allocation for a family office or multi-family office — delivering the capabilities of a dedicated in-house team at a fraction of the overhead cost.</p>
-            <div class="service-case">"$1B family office wanted institutional expertise for direct, control investments. The cost of building an in-house team gave them pause. Devotio was introduced by a trusted advisor and now plays that role full-time."</div>
+            <h3>Advisory</h3>
+            <p>An expert investing resource for major real estate questions and problems. We can assist with a family's existing holdings — including assuming an ongoing asset management role — on an advisory or retainer basis.</p>
+            <div class="service-case">"Client dies leaving $200MM portfolio of private real estate partnership interests. Heirs asked their RIA for guidance. Devotio provided expert valuation review, evaluation of partnership rights, and a detailed recommendation."</div>
         </div>
     </div>
 </section>
 
 <!-- HOW WE WORK -->
-<section id="how-we-work" style="background:var(--dark-3); padding: 96px 64px;">
+<section id="how-we-work" style="background:var(--dark-2); padding: 96px 64px;">
     <div style="max-width:1200px; margin:0 auto;">
         <div style="text-align:center; margin-bottom:80px;">
             <div class="section-label reveal">Our Process</div>
             <h2 class="section-title reveal">How We Work Together</h2>
             <div class="section-divider reveal" style="margin:28px auto;"></div>
-            <p class="section-body reveal" style="margin:0 auto;">We develop relationships gradually, at low cost and commitment. Clients retain full discretion at every stage.</p>
+            <p class="section-body reveal" style="margin:0 auto;">Imagine you had our team sitting in your office at your direction. We develop relationships gradually and clients retain discretion at all times.</p>
         </div>
         <div class="process-steps reveal">
             <div class="process-step">
@@ -698,12 +897,13 @@
 
 <!-- DIFFERENCE TABLE -->
 <section id="difference">
+    <div class="diff-bg"></div>
     <div class="diff-inner">
         <div class="diff-header reveal">
             <div class="section-label">The Devotio Difference</div>
             <h2 class="section-title">A Fundamentally Better Approach</h2>
             <div class="section-divider"></div>
-            <p class="section-body">Devotio reverses the misalignment endemic to traditional real estate funds and deal structures.</p>
+            <p class="section-body" style="font-size: 20px;">Devotio reverses the misalignment of traditional real estate funds and deal structures.</p>
         </div>
         <table class="diff-table reveal">
             <thead>
@@ -737,6 +937,7 @@
                 <h2 class="section-title reveal">Generational<br>Market Selection</h2>
                 <div class="section-divider reveal"></div>
                 <p class="section-body reveal">Market selection is a primary driver of alpha in long-term holds. Devotio focuses exclusively on high-growth emerging cities characterized by strong employment trends, GDP expansion, university and healthcare anchors, and pro-business policy environments.</p>
+                <p class="section-body reveal" style="margin-top:20px">Devotio focuses on high employment growth markets because employment growth drives long-term real estate value — and Devotio is built for generational investors.</p>
                 <div class="markets-tags reveal">
                     <span class="market-tag">Boise, ID</span>
                     <span class="market-tag">Bozeman, MT</span>
@@ -762,7 +963,7 @@
         <div class="market-stats-row">
             <div class="market-stat reveal">
                 <div class="big" style="font-size:36px;letter-spacing:-0.02em">Alpha</div>
-                <p>Structural advantages reinforced by long-term growth markets, durable asset positioning, and tax-optimized hold structures.</p>
+                <p>Right markets, combined with the right structure and management, create enormous Alpha.</p>
             </div>
             <div class="market-stat reveal delay-1">
                 <div class="big">66%</div>
@@ -778,11 +979,12 @@
 
 <!-- TRACK RECORD -->
 <section id="track-record">
+    <div class="track-bg"></div>
     <div class="track-header">
         <div class="section-label reveal">Portfolio</div>
-        <h2 class="section-title reveal">Investment Track Record</h2>
+        <h2 class="section-title reveal">Devotio Investments</h2>
         <div class="section-divider reveal"></div>
-        <p class="section-body reveal">Select investments sourced, structured, closed and asset managed by Devotio across asset classes and markets. Aggregate track record: 15.2% weighted average IRR, 2.39× weighted average multiple.</p>
+        <p class="section-body reveal">Devotio has a 47% realized IRR on its three resolved investments and an underwritten 15.8% IRR and 2.2x multiple on current investments. Devotio has invested in all major property types in major markets across the United States.</p>
     </div>
     <div class="deals-grid">
         <div class="deal-card reveal">
@@ -862,6 +1064,17 @@
                 <div class="deal-metric"><div class="mlabel">UW IRR</div><div class="mvalue">16.1%</div></div>
             </div>
         </div>
+        <div class="deal-card reveal delay-4">
+            <img src="properties/jessie.jpg" alt="40 Jessie Street" class="deal-photo">
+            <span class="deal-badge current">Current</span>
+            <div class="deal-name">40 Jessie Street</div>
+            <div class="deal-location">San Francisco, CA</div>
+            <div class="deal-type">50K SF Single Tenant R&amp;D/Office (Google)<br>Closed Oct 2026</div>
+            <div class="deal-metrics">
+                <div class="deal-metric"><div class="mlabel">UW IRR</div><div class="mvalue">18.0%</div></div>
+                <div class="deal-metric"><div class="mlabel">UW Multiple</div><div class="mvalue">2.1×</div></div>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -885,7 +1098,7 @@
             <img src="headshots/galusha.jpg" alt="Greg Galusha" class="team-photo">
             <div class="team-name">Greg Galusha</div>
             <div class="team-title">Principal</div>
-            <div class="team-exp">Morgan Stanley · PCCP · Newmark · Arris Capital<br>Penn / Wharton · Santa Barbara</div>
+            <div class="team-exp">Morgan Stanley · PCCP · Newmark · Arris Capital Advisors<br>UPenn BA · Santa Barbara</div>
             <div class="team-expand">View Full Bio →</div>
         </div>
         <div class="team-card reveal delay-2" onclick="openModal('thompson')">
@@ -903,7 +1116,7 @@
             <div class="team-expand">View Full Bio →</div>
         </div>
         <div class="team-card reveal delay-4" onclick="openModal('cassell')">
-            <img src="headshots/cassell.jpg" alt="Spencer Cassell" class="team-photo">
+            <img src="headshots/cassell.jpg" alt="Spencer Cassell" class="team-photo" style="object-position: center 50%;">
             <div class="team-name">Spencer Cassell</div>
             <div class="team-title">Vice President</div>
             <div class="team-exp">Principal investing · Asset management · Underwriting<br>Harvard BA · Rice RE Finance</div>
@@ -920,7 +1133,7 @@
             <div class="section-label reveal">Contact</div>
             <h2 class="section-title reveal">Begin the<br>Conversation</h2>
             <div class="section-divider reveal"></div>
-            <p class="section-body reveal">We work with a select number of client relationships. If you are a UHNW investor, family office, or RIA seeking institutional-quality direct real estate exposure, we welcome the conversation.</p>
+            <p class="section-body reveal" style="color: var(--text-light);">We work with a select number of client relationships. If you are a UHNW investor, family office, or RIA seeking institutional-quality direct real estate exposure, we welcome the conversation.</p>
             <div class="contact-details">
                 <div class="contact-item reveal">
                     <div class="contact-dot"></div>
@@ -940,7 +1153,7 @@
                     <div class="contact-dot"></div>
                     <div class="contact-text">
                         <strong>Email</strong>
-                        info@devotiorealestate.com
+                        investor.services@devotiorealestate.com
                     </div>
                 </div>
             </div>
@@ -1125,6 +1338,22 @@
         });
         tag.addEventListener('mouseleave', () => {
             document.querySelectorAll('.city-dot').forEach(dot => dot.classList.remove('active'));
+        });
+    });
+</script>
+<script>
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', () => {
+        const open = mobileMenu.classList.toggle('open');
+        hamburger.classList.toggle('open', open);
+        document.body.style.overflow = open ? 'hidden' : '';
+    });
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+            hamburger.classList.remove('open');
+            document.body.style.overflow = '';
         });
     });
 </script>
